@@ -9,6 +9,7 @@
 #include "CWall.h"
 #include <iostream>
 #include <SDL_image.h>
+#include<list>
 
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 768;
@@ -182,7 +183,7 @@ int main(int argc, char* args[])
 		bool quit = false;
 
 		SDL_Event e;
-		CBoar ad;
+		std::list<CBoar> allboars(10);
 
 		//CCar asd = { 1 };
 		//CTrashcar asd = { 1 };
@@ -242,9 +243,25 @@ int main(int argc, char* args[])
 			// returns pointer to array consisted of all keys states
 			const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
 			// allows to control boar only before launch
-			if(!ad.stategetter()) ad.eventhandler(currentKeyStates);
 
+
+
+			//for (auto itr = allboars.begin(); itr != allboars.end(); itr++)
+			//{
+			//	if (!(itr->stategetter()))
+			//	{
+			//		itr->eventhandler(currentKeyStates);
+			//	}
+			//	//if(!ad.stategetter()) ad.eventhandler(currentKeyStates);
+			//}
+			// so ill work only on first boar and then at the end of a loop 
+			// ill update state of list 
+			auto itr = allboars.begin();
 			
+			if (!(itr->stategetter()))
+			{
+				itr->eventhandler(currentKeyStates);
+			}
 
 			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(gRenderer);
@@ -262,13 +279,11 @@ int main(int argc, char* args[])
 			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			// boar
 			
-			if (ad.stategetter())
+			if (itr -> stategetter())
 			{
-				ad.move();
-				
-				
+				itr -> move();				
 			}
-			ad.render();
+			itr -> render();
 			
 			
 			//lanes
