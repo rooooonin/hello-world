@@ -1,0 +1,3 @@
+﻿  Source.cpp
+c:\users\bursk\source\repos\boargamejakubszukala\boargamejakubszukala\source.cpp(171): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  boargamejakubszukala.vcxproj -> C:\Users\bursk\source\repos\boargamejakubszukala\Debug\boargamejakubszukala.exe
