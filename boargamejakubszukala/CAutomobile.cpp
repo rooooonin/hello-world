@@ -2,6 +2,7 @@
 #include "Headers.h"
 #include <iostream>
 #include <SDL_image.h>
+//
 void CAutomobile::render()
 {
 	SDL_RenderCopy(gRenderer, automobiletexture, NULL, &Hitbox);
